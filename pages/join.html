@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>申请店铺</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  <meta name="x5-page-mode" content="app">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes">
+  <meta name="browsermode" content="application">
+
+  <link rel="stylesheet" href="../assets/css/basic.css">
+  <link rel="stylesheet" href="../assets/css/register.css">
+</head>
+<body>
+  <main class="join_cont">
+    <div class="step_item">
+      <img class="step_img" src="../assets/images/jl1.png">
+    </div>
+    <div class="step_item">
+      <img class="step_img" src="../assets/images/jl2.png">
+    </div>
+    <div class="step_item">
+      <img class="step_img" src="../assets/images/jl3.png">
+    </div>
+    <div class="step_item">
+      <div class="honor honor_person">
+        <span>贷钱宝已经帮助</span>
+        <span style="color: #e92949;">24234</span>
+        <span>位代理赚到了钱</span>
+      </div>
+      <div class="honor honor_money">
+        <span>贷钱宝截止现在累计结算佣金为</span>
+        <span style="color: #e92949;">545141</span>
+        <span>元</span>
+      </div>
+      <img class="step_img" src="../assets/images/jl4.png">
+    </div>
+
+    <div class="step_item">
+      <div class="step_person_info">
+        <div class="step_person" style="background:#fff url(../assets/images/icon1.jpg) left top no-repeat;background-size: 4.267rem auto;">
+          <p class="name">JeEj</p>
+          <p class="job">30岁&nbsp;&nbsp;银行经理</p>
+          <p class="desc">贷钱宝，一个良心优秀的贷钱平台，自动审核，一秒到账，一步到位。</p>
+        </div>
+        <div class="step_person" style="background:#fff url(../assets/images/icon2.jpg) right top no-repeat;background-size: 4.267rem auto;">
+          <p class="name">JeEj</p>
+          <p class="job">30岁&nbsp;&nbsp;银行经理</p>
+          <p class="desc">贷钱宝，一个良心优秀的贷钱平台，自动审核，一秒到账，一步到位。</p>
+        </div>
+        <div class="step_person" style="background:#fff url(../assets/images/icon3.jpg) left top no-repeat;background-size: 4.267rem auto;">
+          <p class="name">JeEj</p>
+          <p class="job">30岁&nbsp;&nbsp;银行经理</p>
+          <p class="desc">贷钱宝，一个良心优秀的贷钱平台，自动审核，一秒到账，一步到位。</p>
+        </div>
+        <div class="step_person" style="background:#fff url(../assets/images/icon4.jpg) right top no-repeat;background-size: 4.267rem auto;">
+          <p class="name">JeEj</p>
+          <p class="job">30岁&nbsp;&nbsp;银行经理</p>
+          <p class="desc">贷钱宝，一个良心优秀的贷钱平台，自动审核，一秒到账，一步到位。</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="bottom_btn" onclick="$('.form_alert').show();">
+      <img src="../assets/images/join_btn.png">
+    </div>
+  </main>
+
+  
+
+  <p class="alert_tips"></p>
+  <div class="form_alert">
+    <div class="alert_bg" onclick="$('.form_alert').hide();"></div>
+    <div class="fa_cont">
+      <img class="fa_logo" src="../assets/images/join_logo.png">
+      <p class="wel">欢迎您！</p>
+      <div class="fa_item">
+        <p>手机号码</p>
+        <input type="tel" name="phone" placeholder="请输入手机号码">
+      </div>
+      <div class="fa_item">
+        <p>验证码</p>
+        <input type="tel" name="code" placeholder="请输入验证码">
+        <a href="javascript:void(0);" class="fa_code">获取验证码</a>
+        <input type="hidden" id="fa_code_val" value="4242">
+      </div>
+      <a href="javascript:void(0);" class="fa_submit">
+        <img src="../assets/images/rg.png">
+      </a>
+    </div>
+  </div>
+</body>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/fontsize.js"></script>
+<script>
+  $(function(){
+
+    var load_imgcode = $("#fa_code_val").val();
+    var wait = 60;
+    $(".form_alert .fa_cont .fa_item .fa_code").click(function(){
+      if(wait != 60){ return; }
+      var phone = $(".form_alert .fa_cont .fa_item input[name='phone']").val();
+      if(!phone){
+        sAlert("请输入手机号!");
+        return;
+      }
+      //ajax
+      sAlert("验证码已发送，请注意查收");
+      var $this = $(this);
+      var countDown = setInterval(function(){
+        $this.html('重新发送('+wait+')').css("color","#b6b6b6");
+        wait--;
+        if(wait<1){
+          clearInterval(countDown);
+          $this.html('获取验证码').css("color","#f0594a");
+          wait = 60
+        }
+      },1000)
+    });
+
+
+    
+    $(".form_alert .fa_cont .fa_submit").click(function(){
+      var phone = $(".form_alert .fa_cont .fa_item input[name='phone']").val();
+      var code = $(".form_alert .fa_cont .fa_item input[name='code']").val();
+      if(!phone){
+        sAlert("请输入手机号!");
+        return;
+      }
+      if(!code){
+        sAlert("请输入手机验证码!");
+        return;
+      }
+    });
+
+
+    function sAlert(msg){
+      $(".alert_tips").html(msg).show();
+      setTimeout(function(){
+        $(".alert_tips").hide();
+      },1500)
+    }
+  });
+</script>
+</html>
