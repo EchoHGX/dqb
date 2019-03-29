@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>推荐</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  <meta name="x5-page-mode" content="app">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes">
+  <meta name="browsermode" content="application">
+
+  <link rel="stylesheet" href="../assets/css/basic.css">
+  <link rel="stylesheet" href="../assets/css/register.css">
+</head>
+<body>
+<div class="invi_cont">
+  <div class="msg_warp">
+    <div class="msg_list">
+      <p>1尾号8553的用户，总获得用<span>234243.10</span>元</p>
+      <p>2尾号8553的用户，总获得用<span>234243.10</span>元</p>
+      <p>3尾号8553的用户，总获得用<span>234243.10</span>元</p>
+    </div>
+  </div>
+  <p class="msg_desc">已经有<span>23434</span>为代理在借点点转到钱了</p>
+  <p class="msg_price">借点点实时累计佣金奖励<span>234242</span>元</p>
+
+  <div class="reward_wrap">
+    <p class="reward_tips">邀请直接代理 奖励<span>88</span>元现金</p>
+    <p class="reward_num">88<span>元</span></p>
+  </div>
+
+  <div class="reward_wrap rew2">
+    <p class="reward_tips">推广的代理在借点点赚取的每一笔佣金</p>
+    <div class="reward2 clearfix">
+      <div class="reward_left">
+        <p class="reward_num">20<span>%</span></p>
+        <p class="oth_tips">直接代理</p>
+      </div>
+      <div class="reward_right">
+        <p class="reward_num">10<span>%</span></p>
+        <p class="oth_tips">间接代理</p>
+      </div>
+    </div>
+    <p class="raw2_tips">假设A推荐了B，B推荐了C；则C是B的直接代理，<br/>C是A的间接代理</p>
+    <div class="raw_tips2">
+      <p>直接发展的代理赚取10000元，奖励<span>2000<span>元</p>
+      <p>间接发展的代理赚取10000元，奖励<span>1000<span>元</p>
+    </div>
+  </div>
+
+  <p class="rew_caption">三步完成邀请</p>
+  <div class="rew_setp clearfix">
+    <span>第一步</span>
+    <p>点击下方“分享海报”和“立即推荐”<br/>按钮，发送内容给你的好友。</p>
+  </div>
+  <div class="rew_setp clearfix">
+    <span>第二步</span>
+    <p>你的好友点击链接完成注册，<br/>并下载App进行登陆。</p>
+  </div>
+  <div class="rew_setp clearfix">
+    <span>第三步</span>
+    <p>你的好友已经成功成为了你的下级，<br/>在首页“已邀代理”进行查看</p>
+  </div>
+  <p class="fot_tips">*温馨提示：被邀请的好友将免费获得代理权限，可以免费进行推广</p>
+</div>
+</body>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/fontsize.js"></script>
+<script>
+  $(function(){
+      var c = 0;
+      var new_len = $('.invi_cont .msg_warp p').size();
+      setInterval(function () {
+        c++;
+        if (c == new_len) {
+          $('.invi_cont .msg_warp .msg_list').css({'top': '0'});
+          c = 1;
+        }
+        t = c * -30;
+        $('.invi_cont .msg_warp .msg_list').animate({'top': t},500);
+      },5000)
+  });
+</script>
+</html>
