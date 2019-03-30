@@ -17,7 +17,12 @@
   <link rel="stylesheet" href="../assets/css/register.css">
 </head>
 <body>
+<header class="mheader">
+  <a class="mback" href="javascript:history.go(-1)"></a>
+  <p class="mtitle">推荐代理</p>
+</header>
 <div class="invi_cont">
+  <a href="javascript:$('.rule_cont').show();" class="gorule">规则</a>
   <div class="msg_warp">
     <div class="msg_list">
       <p>1尾号8553的用户，总获得用<span>234243.10</span>元</p>
@@ -25,7 +30,7 @@
       <p>3尾号8553的用户，总获得用<span>234243.10</span>元</p>
     </div>
   </div>
-  <p class="msg_desc">已经有<span>23434</span>为代理在借点点转到钱了</p>
+  <p class="msg_desc">已经有<span>23434</span>为代理在借点点赚到钱了</p>
   <p class="msg_price">借点点实时累计佣金奖励<span>234242</span>元</p>
 
   <div class="reward_wrap">
@@ -66,7 +71,66 @@
     <p>你的好友已经成功成为了你的下级，<br/>在首页“已邀代理”进行查看</p>
   </div>
   <p class="fot_tips">*温馨提示：被邀请的好友将免费获得代理权限，可以免费进行推广</p>
+  <div class="rs_btns clearfix">
+    <a href="javascript:void(0);" class="share_btn">
+      <img src="../assets/images/share_btn.png">
+    </a>
+    <a href="javascript:void(0);" class="rec_btn">
+      <img src="../assets/images/rec_btn.png">
+    </a>
+  </div>
 </div>
+<!-- 规则 -->
+<div class="rule_cont">
+  <a href="javascript:$('.rule_cont').hide();" class="concel_rule"></a>
+  <div class="ztxt_cont">
+    1.活动日期：2019年3月29日00:00起<br/>
+    2.本活动仅限借点点正式代理参与，且限直接邀请代理才能获得奖励；<br/>
+    3.成功邀请一名直接代理，自动奖励88元现金；<br/>
+    4.新代理首次提现需满足100元佣金；<br/>
+    5.若发行任何刷单、恶意邀请、作弊套路用户的行为将永久封号处理；<br/>
+    6.活动期间奖金将自动发放，请在个人中小查看奖励详情；<br/>
+    7.活动结束后，自动停发奖励；<br/>
+    8.本活动最终解释权归借点点所有。<br/>
+  </div>
+</div>
+
+<div class="share_alert all">
+  <div class="share_bg"></div>
+  <div class="share_cont">
+    <p class="title">分享海报</p>
+    <a href="javascript:void(0);" class="cancel"></a>
+    <div class="share_img_list clearfix">
+      <a href="javascript:void(0);" class="share_img">
+        <img src="../assets/images/share_img.png">
+      </a>
+      <a href="javascript:void(0);" class="share_img">
+        <img src="../assets/images/share_img.png">
+      </a>
+      <a href="javascript:void(0);" class="share_img">
+        <img src="../assets/images/share_img.png">
+      </a>
+      <a href="javascript:void(0);" class="share_img">
+        <img src="../assets/images/share_img.png">
+      </a>
+    </div>
+  </div>
+  <p class="tips">长按图片保存到手机</p>
+</div>
+<div class="share_alert one">
+  <div class="share_bg"></div>
+  <div class="share_cont">
+    <img class="code_img" src="../assets/images/code.png">
+    <p class="share_tips">扫描加入借点点</p>
+    <div class="share_btns clearfix">
+      <a href="javascript:copyArticle(this);" class="copylink">复制链接</a>
+      <a href="javascript:void(0);" class="share_wx">微信分享</a>
+    </div>
+    <p class="linktext">http:www.baidu.com</p>
+    <p style="position: absolute;opacity: 0;" id="url">http:www.baidu.com</p>
+  </div>
+</div>
+<p class="showmsg_alert"></p>
 </body>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/fontsize.js"></script>
@@ -83,6 +147,49 @@
         t = c * -30;
         $('.invi_cont .msg_warp .msg_list').animate({'top': t},500);
       },5000)
+
+
+      $(".rs_btns .share_btn").click(function(){
+        $(".share_alert.all").show();
+        setTimeout(function(){
+          $(".share_alert.all").addClass("active");
+        },100)
+      });
+
+      $(".share_alert .share_cont .cancel,.share_alert .share_bg").click(function(){
+        $(".share_alert").removeClass("active");
+        setTimeout(function(){
+          $(".share_alert").hide();
+        },150)
+      });
+      
+
+      $(".rs_btns .rec_btn").click(function(){
+        $(".share_alert.one").show();
+        setTimeout(function(){
+          $(".share_alert.one").addClass("active");
+        },100)
+      });
+
   });
+
+  
+  function copyArticle(event) {
+    const range = document.createRange();
+    //url:复制内容的id;
+    range.selectNode(document.getElementById('url'));
+    const selection = window.getSelection();
+    if(selection.rangeCount > 0) selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+    showmsg('复制成功')
+  }
+
+  function showmsg(msg){
+    $(".showmsg_alert").html(msg).show();
+    setTimeout(function(){
+      $(".showmsg_alert").hide();
+    },2000)
+  }
 </script>
 </html>
